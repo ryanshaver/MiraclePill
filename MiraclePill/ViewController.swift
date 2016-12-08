@@ -13,6 +13,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var btnStatePicker: UIButton!
     @IBOutlet weak var statePicker: UIPickerView!
     
+    @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var countryText: UITextField!
+    @IBOutlet weak var zipLabel: UILabel!
+    @IBOutlet weak var zipText: UITextField!
+    
+    @IBOutlet weak var successImage: UIImageView!
     
     let states = ["Alaska", "Alabama", "Arkansas", "California", "Texas", "West Virginia"]
     
@@ -29,6 +35,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 
     @IBAction func btnStatePicker(_ sender: Any) {
         statePicker.isHidden = false
+        countryLabel.isHidden = true
+        countryText.isHidden = true
+        zipLabel.isHidden  = true
+        zipText.isHidden = true
+    }
+    
+    @IBAction func buyNowPressed(_ sender: Any) {
+        for view in self.view.subviews as [UIView] {
+            view.isHidden = true
+        }
+        successImage.isHidden = false
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -46,6 +63,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         btnStatePicker.setTitle(states[row], for: UIControlState.normal)
         statePicker.isHidden = true
+        countryLabel.isHidden = false
+        countryText.isHidden = false
+        zipLabel.isHidden  = false
+        zipText.isHidden = false
+
     }
 }
 
